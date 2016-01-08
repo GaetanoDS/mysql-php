@@ -39,3 +39,61 @@ le login 		: il permet de vous identifier.
 
 le mot de passe 	: il y a des chances pour que le mot de passe soit le même que celui que vous utilisez pour accéder au FTP. 
 ---------------		  Renseignez-vous auprès de votre hébergeur.
+
+en local
+--------
+Lorsque vous faite des tests sur votre ordinateur à la maison. 
+On dit que vous travaillez « en local ». 
+
+	Par conséquent, le nom de l'hôte sera 	: localhost
+	                   -------------
+	Quant au login par défaut le login est 	: root
+		 -----  
+	et mot de passe en fonction du package installé wamp, xamp ou autres : 	
+	- soit il n'y a pas de mot de passe sous WAMP (sur windows)
+	- soit le mot de passe est "root" sous MAMP (sur Mac)
+
+	CODE de connexion en Local :
+	----------------------------
+		Penser à toujours Tester la présence d'erreurs avec le try et cath
+		------------------------------------------------------------------
+		s'il y a une erreur, PHP risque d'afficher toute la ligne qui pose l'erreur, ce qui inclut le mot de passe !
+	
+		Vous ne voudrez pas que vos visiteurs puissent voir le mot de passe si une erreur survient lorsque votre site est en 			ligne. 
+		
+		Il est préférable de traiter l'erreur. 
+
+		En cas d'erreur, PDO renvoie ce qu'on appelle une exception qui permet de « capturer » l'erreur.
+
+		Voici le code de connexion avec gestion d'erreurs :
+		-------------------------------------------------
+			
+		<?php
+			
+			try
+			{
+			 	$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+			}
+			catch (Exception $e)
+			{
+				die('Erreur : ' . $e->getMessage());
+			}
+			
+		?>
+
+		try
+		---
+		PHP essaie d'exécuter les instructions à l'intérieur du bloc try. 
+
+		S'il y a une erreur, il rentre dans le bloc catch
+		-------------------------------------------------
+		et fait ce qu'on lui demande (ici, on arrête l'exécution de la page en affichant un message décrivant l'erreur).
+		(rappel : la fonction die : Print a message and exit the current script)
+			
+		Si au contraire tout se passe bien, PHP poursuit l'exécution du code et ne lit pas ce qu'il y a dans le bloc catch.
+
+		rappel sur la gestion des exceptions :
+		------------------------------------
+		fonctionne uiquement sur du code orienté objet.
+		comme par exemple sur PDO (car PDO est orienté objet, puisque $bdd = new PDO... crée un objet $bdd...
+			
