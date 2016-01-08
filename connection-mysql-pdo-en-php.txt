@@ -1,0 +1,41 @@
+
+Se connecter à MySQL avec PDO en PHP (la connexion à la base de données n'a besoin d'être faite qu'une seule fois, au début de la page)
+------------------------------------
+Vous noterez que l'on ne se connecte à la base de données qu'une fois par page. 
+Pas besoin donc de se connecter à nouveau pour effectuer d'autres requêtes.
+
+Après avoir vérifier que PDO est activé (dans le fichier php.ini), nous pouvons alors nous connecter à MySQL. 
+
+Rappel : PDO est ce qu'on appelle une extension orientée objet. 
+	 -----------------------------------------------------
+
+Nous allons avoir besoin de quatre renseignements pour nous connecter :
+---------------------------------------------------------------------
+le nom de l'hôte 	: c'est l'adresse de l'ordinateur où MySQL est installé (comme une adresse IP). 
+----------------
+			  Le plus souvent, MySQL est installé sur le même ordinateur que PHP : 
+			  dans ce cas, mettez la valeur localhost (cela signifie « sur le même ordinateur »). 
+			  
+			  Néanmoins, il est possible que votre hébergeur web vous indique une autre valeur à renseigner 
+			  (qui ressemblerait à ceci : sql.hebergeur.com). 
+
+			  Dans ce cas, il faudra modifier cette valeur lorsque vous enverrez votre site sur le Web ;
+
+			  Ce premier paramètre (qui commence par mysql) s'appelle le DSN : 
+			  ---------------------------------------------------------------
+			  Data Source Name. C'est généralement le seul qui change en fonction du type de base de données auquel on se connecte.
+
+
+la base 		: c'est le nom de la base de données à laquelle vous voulez vous connecter. 
+-------	
+			  par exemple, la base s'appelle test. 
+
+
+le login 		: il permet de vous identifier. 
+--------
+			  Renseignez-vous auprès de votre hébergeur pour le connaître. 
+			  Le plus souvent (chez un hébergeur gratuit), c'est le même login que vous utilisez pour le FTP ;
+
+
+le mot de passe 	: il y a des chances pour que le mot de passe soit le même que celui que vous utilisez pour accéder au FTP. 
+---------------		  Renseignez-vous auprès de votre hébergeur.
