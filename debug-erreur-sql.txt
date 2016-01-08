@@ -1,0 +1,30 @@
+Traquer les erreurs
+-------------------
+Lorsqu'une requête SQL « plante », bien souvent PHP vous dira qu'il y a eu une erreur à la ligne du fetch :
+
+ex : Fatal error: Call to a member function fetch() on a non-object in C:\wamp\www\tests\index.php on line 13
+
+Ce n'est pas très précis comme message d'erreur !
+-----------------------------------------------
+Ce n'est pas la ligne du fetch qui est en cause : c'est souvent vous qui avez mal écrit votre requête SQL quelques lignes plus haut.
+
+
+Pour afficher des détails sur l'erreur :
+--------------------------------------
+
+méthode n° 1 (gestion d'erreur à la connexion et valable pour toutes les requêtes futures)
+------------
+	il faut activer les erreurs lors de la connexion à la base de données via PDO.
+
+	Ajoutez-y un paramètre à la fin pour activer les erreurs [array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)] :
+	--------------------------------------------------------
+	<?php
+		$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	?>
+	
+	Désormais, toutes vos requêtes SQL qui comportent des erreurs les afficheront avec un message beaucoup plus clair.
+
+
+	rappel 
+	valeur de retour : PDO::query() retourne un objet PDOStatement, ou FALSE si une erreur survient.
+
