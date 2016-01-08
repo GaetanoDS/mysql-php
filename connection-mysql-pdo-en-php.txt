@@ -1,5 +1,6 @@
 
-Se connecter à MySQL avec PDO en PHP (la connexion à la base de données n'a besoin d'être faite qu'une seule fois, au début de la page)
+Se connecter à MySQL avec PDO en PHP 
+(la connexion à la base de données n'a besoin d'être faite qu'une seule fois, au début de la page)
 ------------------------------------
 Vous noterez que l'on ne se connecte à la base de données qu'une fois par page. 
 Pas besoin donc de se connecter à nouveau pour effectuer d'autres requêtes.
@@ -97,3 +98,23 @@ On dit que vous travaillez « en local ».
 		fonctionne uiquement sur du code orienté objet.
 		comme par exemple sur PDO (car PDO est orienté objet, puisque $bdd = new PDO... crée un objet $bdd...
 			
+en prod
+-------
+	paramètre: mysql:host=	--> voir les données de connections avec votre hébergeur
+	----------------------
+		en prod mettre ip ou nom du serveur hébergeur.
+	
+		Remarque:
+		--------
+		Votre serveur de base de donnée est sur le même machine que votre serveur web hébergeur.
+		Vous devez donc mettre localhost comme nom de serveur. 
+		à vérifier avec l'hebergeur s'il ne faut pas mettre autre chose que localhost !
+
+	paramètre du login :
+	------------------
+		en prod mettre le nom du user que vous avez créée dans la DB Mysql avec ses droit limités.
+
+	paramètre du mot de passe :
+	-------------------------
+		en prod mettre le mot de passe du user créée de la DB Mysql.
+
