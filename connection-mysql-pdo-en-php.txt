@@ -118,3 +118,41 @@ en prod
 	-------------------------
 		en prod mettre le mot de passe du user créée de la DB Mysql.
 
+------------------
+Remarque Objet PDO
+------------------
+
+$bdd est un objet
+La ligne de code :	$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', ''); 
+----------------
+Crée ce qu'on appelle un objet $bdd. 
+
+Ce n'est pas vraiment une variable (même si ça y ressemble fortement) : c'est un objet 
+--------------------------------------------------------------------------------------
+qui représente la connexion à la base de données. 
+
+On crée la connexion en indiquant dans l'ordre dans les paramètres :
+- le nom d'hôte;
+- le nom de la base de données;
+- le login;
+- le mot de passe.
+
+rem : Créer qu'une seul fois la connection dans un scrip : 
+--------------------------------------------------------
+et pour pouvoir accéder à la variable objet de connexion pour ses futures requêtes, depuis une fonction par exemple,
+
+	soit utiliser la façon non orienté objet : 
+	----------------------------------------
+	global $bdd; 	// dans la fonction
+			// Cela nous évite d'avoir à recréer une connexion à la base de données dans chaque fonction, 
+			// ce qui serait très mauvais pour les performances du site (et très laid dans le code !).
+
+
+	soit utiliser la façon POO avec la mise en place d'une classe respectant le desing pateern singleton : 
+	-----------------------------------------------------------------------------------------------------
+	Il existe une meilleure méthode pour récupérer l'objet $bdd et qui est basée sur le design pattern singleton. 
+
+	Elle consiste à créer une classe qui retourne toujours le même objet. 
+
+	voir le cours PHP POO :
+	http://www.apprendre-php.com/tutoriels/tutoriel-45-singleton-instance-unique-d-une-classe.html
